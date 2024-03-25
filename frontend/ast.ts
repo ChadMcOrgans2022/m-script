@@ -4,6 +4,7 @@ export type NodeType =
     | "VarDeclaration"
 
       // Expressions
+    | "AssignmentExpr"
     | "NumericLiteral" 
     | "Identifier" 
     | "BinaryExpr" 
@@ -30,6 +31,13 @@ export interface VarDeclaration extends Stmt {
 
 export interface Expr extends Stmt {
 
+}
+
+// x = {foo : "Bar"}
+export interface AssignmentExpr extends Expr {
+    kind: "AssignmentExpr",
+    assignee: Expr;
+    value: Expr;
 }
 
 export interface BinaryExpr extends Expr {
